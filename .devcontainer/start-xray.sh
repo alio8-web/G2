@@ -11,11 +11,11 @@ XRAY_PROCESS_PATTERN="/usr/local/bin/xray -c /tmp/config.runtime.json"
 
 python3 - <<'PY'
 import json
+import os
 from pathlib import Path
 
 config_path = Path("/etc/config.json")
 runtime_path = Path("/tmp/config.runtime.json")
-import os
 uuid_value = os.environ["XRAY_UUID"].strip()
 data = json.loads(config_path.read_text())
 data["inbounds"][0]["settings"]["clients"][0]["id"] = uuid_value

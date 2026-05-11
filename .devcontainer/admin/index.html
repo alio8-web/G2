@@ -73,7 +73,7 @@
         if (info.path) pathEl.value = info.path;
         if (info.remark) remarkEl.value = info.remark;
       } catch (_) {
-        if (!uuidEl.value) uuidEl.value = "UUID not available yet";
+        if (!uuidEl.value) uuidEl.value = "UUID not loaded. Please wait for Xray start, then refresh.";
       }
       render();
     }

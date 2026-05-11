@@ -15,4 +15,4 @@ RUN chmod +x /usr/local/bin/start-xray.sh /usr/local/bin/start-admin.sh
 COPY config.json /etc/config.json
 COPY admin /opt/mrh-admin
 
-CMD ["/usr/local/bin/xray", "-c", "/etc/config.json"]
+CMD ["/bin/sh", "-lc", "/usr/local/bin/start-xray.sh && tail -f /tmp/xray.log"]
