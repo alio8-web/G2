@@ -6,6 +6,7 @@ if [ ! -f "$UUID_FILE" ]; then
   cat /proc/sys/kernel/random/uuid > "$UUID_FILE"
 fi
 XRAY_UUID="$(cat "$UUID_FILE")"
+export XRAY_UUID
 XRAY_PROCESS_PATTERN="/usr/local/bin/xray -c /tmp/config.runtime.json"
 
 python3 - <<'PY'
@@ -14,7 +15,8 @@ from pathlib import Path
 
 config_path = Path("/etc/config.json")
 runtime_path = Path("/tmp/config.runtime.json")
-uuid_value = Path.home().joinpath(".xray-uuid").read_text().strip()
+import os
+uuid_value = os.environ["XRAY_UUID"].strip()
 data = json.loads(config_path.read_text())
 data["inbounds"][0]["settings"]["clients"][0]["id"] = uuid_value
 runtime_path.write_text(json.dumps(data, indent=2) + "\n")
@@ -25,5 +27,9 @@ cat > /opt/mrh-admin/xray-info.json <<EOF
 EOF
 
 if ! pgrep -f "$XRAY_PROCESS_PATTERN" >/dev/null; then
-  sudo nohup /usr/local/bin/xray -c /tmp/config.runtime.json >/tmp/xray.log 2>&1 &
+  if sudo -n true >/dev/null 2>&1; then
+    sudo nohup /usr/local/bin/xray -c /tmp/config.runtime.json >/tmp/xray.log 2>&1 &
+  else
+    nohup /usr/local/bin/xray -c /tmp/config.runtime.json >/tmp/xray.log 2>&1 &
+  fi
 fi
