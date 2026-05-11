@@ -21,7 +21,7 @@
     <h1>MRH-G2Ray Admin GUI</h1>
     <p class="muted">This panel generates your VLESS link without terminal usage.</p>
     <label for="uuid">UUID</label>
-    <input id="uuid" value="550e8400-e29b-41d4-a716-446655440000">
+    <input id="uuid" value="">
     <label for="path">Path</label>
     <input id="path" value="/">
     <label for="remark">Remark</label>
@@ -65,7 +65,20 @@
       }
       setTimeout(() => (copyBtn.textContent = "Copy VLESS Link"), 1200);
     });
-    render();
+
+    async function preloadInfo() {
+      try {
+        const info = await fetch("xray-info.json", { cache: "no-store" }).then((r) => r.json());
+        if (info.uuid) uuidEl.value = info.uuid;
+        if (info.path) pathEl.value = info.path;
+        if (info.remark) remarkEl.value = info.remark;
+      } catch (_) {
+        if (!uuidEl.value) uuidEl.value = "UUID_NOT_READY_YET";
+      }
+      render();
+    }
+
+    preloadInfo();
   </script>
 </body>
 </html>

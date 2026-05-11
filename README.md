@@ -64,6 +64,7 @@
 - Open Admin GUI in browser:
   - `https://<YOUR-CODESPACE-NAME>-8080.app.github.dev`
 - Copy your generated `vless://` link from the panel
+- UUID is generated automatically per Codespace and shown in the GUI
 
 #### Step 5: Connect
 Paste the link into one of these:
@@ -169,6 +170,7 @@ Click **Sync fork** on your forked repository's page.
 - پنل گرافیکی را در مرورگر باز کنید:
   - `https://<YOUR-CODESPACE-NAME>-8080.app.github.dev`
 - لینک `vless://` تولیدشده را از پنل کپی کنید
+- مقدار UUID به‌صورت خودکار برای هر Codespace ساخته می‌شود و داخل پنل نمایش داده می‌شود
 
 #### مرحله ۵: اتصال
 لینک را در یکی از نرم‌افزارهای زیر وارد کنید:
