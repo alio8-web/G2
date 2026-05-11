@@ -59,6 +59,18 @@ This project has been significantly improved by **[@mahdiit](https://github.com/
 
 ---
 
+## 🗺️ Roadmap (Planned Features)
+
+| Feature | Status | Issue |
+| :--- | :---: | :--- |
+| Auto-stop Codespace after inactivity | 📋 Planned | [#3](https://github.com/mrh000mrh/MRH-G2Ray-2/issues/3) |
+| Traffic statistics panel | 💡 Idea | — |
+| Multi-user support | 💡 Idea | — |
+
+> 💡 **Contributions Welcome:** If you'd like to implement any of these features, please comment on the issue.
+
+---
+
 <h2 id="-english-guide" align="left">🇬🇧 Quick Start (English)</h2>
 
 <div dir="ltr">
